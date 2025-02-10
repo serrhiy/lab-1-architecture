@@ -17,7 +17,7 @@ type TimeResponse struct {
 
 func timeHandler(response http.ResponseWriter, request *http.Request) {
 	currentTime := time.Now().Format(time.RFC3339)
-	answer, err := json.Marshal(TimeResponse{currentTime})
+	answer, err := json.Marshal(TimeResponse{ currentTime })
 	if err != nil {
 		response.WriteHeader(http.StatusInternalServerError)
 		return
@@ -26,6 +26,6 @@ func timeHandler(response http.ResponseWriter, request *http.Request) {
 	response.Write(answer)
 }
 
-var Handlers = map[string]Handler{
-	"/time": {[]string{http.MethodGet}, timeHandler},
+var Handlers = map[string] Handler {
+	"/time": { []string{ http.MethodGet }, timeHandler },
 }
