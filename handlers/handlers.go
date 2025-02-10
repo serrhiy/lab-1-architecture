@@ -25,3 +25,7 @@ func timeHandler(response http.ResponseWriter, request *http.Request) {
 	response.Header().Set("Content-Type", "application/json")
 	response.Write(answer)
 }
+
+var Handlers = map[string]Handler{
+	"/time": {[]string{http.MethodGet}, timeHandler},
+}
