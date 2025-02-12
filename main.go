@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"lab-1-architecture/handlers"
 	"log"
 	"net"
@@ -21,7 +22,7 @@ func main() {
 				}
 				response.WriteHeader(http.StatusMethodNotAllowed)
 				message := "Method " + request.Method + " not allowed"
-				response.Write([]byte(message))
+				io.WriteString(response, message)
 			}
 		}
 		http.HandleFunc(path, controller)
